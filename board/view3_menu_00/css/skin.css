@@ -1,0 +1,11 @@
+/* .menu_list_wrap{padding-bottom:100px} */
+.menu_list{margin-bottom:80px}
+
+/* 한상차림 리스트 형식 */
+.menu_list li{float:left;width:520px;margin-bottom:40px}
+.menu_list li:nth-child(even){float:right}
+.menu_list .img{height:425px;background-repeat:no-repeat;background-position:center;background-size:cover}
+.menu_list .text_area{height:145px;background:#fff;padding:30px 10px 0;box-sizing:border-box}
+.menu_list .text_area .mid{left:0;width:100%;padding:0 20px;box-sizing:border-box}
+.menu_list .menu_title{padding-bottom:10px;font-family:'NotoSansKR-Bold';font-size:30px;color:#222}
+.menu_list .menu_text{font-family:'NotoSansKR-Light';font-size:18px;letter-spacing:-0.02em;line-height:140%;color:#666}

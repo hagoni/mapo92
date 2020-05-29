@@ -1,0 +1,57 @@
+<?
+@include_once('../inc/top.php');
+?>
+<style>
+.map_area{height:62.5vw;background:#555}
+.com_list{padding:12.5vw 0}
+.com_list li{margin-top:8.125vw}
+.com_list li:first-child{margin:0}
+.com_list .list_ttl{margin-bottom:3.4375vw}
+</style>
+
+		<div class="map_wrap">
+			<div class="map_area" id="map_area"></div>
+			<ul class="com_list inner560">
+				<li>
+					<p class="list_ttl"><img src="<?=$root?>/img/page/com/03/com_ttl1.png" alt="대표번호" class="w100"></p>
+					<p class="text2">
+						032)819-6870
+					</p>
+				</li>
+				<li>
+					<p class="list_ttl"><img src="<?=$root?>/img/page/com/03/com_ttl2.png" alt="대표번호" class="w100"></p>
+					<p class="text2">
+						인천광역시 남동구 논현로 46번길 39-24
+					</p>
+				</li>
+				<li>
+					<p class="list_ttl"><img src="<?=$root?>/img/page/com/03/com_ttl3.png" alt="대표번호" class="w100"></p>
+					<p class="text2">
+						수인선 호구포역 2번출구 NH주택공사 앞<br>동원베네스트 오른쪽
+					</p>
+				</li>
+			</ul>
+		</div>
+<?
+@include_once('../inc/bottom.php');
+?>
+<script type="text/javascript">
+<?
+$markerImgPath = '/design/other/marker.png';
+$markerImgSize = getImagesize(ROOT_INC.$markerImgPath);
+?>
+
+var marker = {
+	src: '<?=$pc.$markerImgPath?>',
+	offset: {x: <?=$markerImgSize[0] / 2?>, y: <?=$markerImgSize[1]?>},
+	size: {x: <?=$markerImgSize[0]?>, y: <?=$markerImgSize[1]?>}
+};
+var placeInfo = {
+	appkey: '<?=$settings_data['kakao_api_key'];?>',
+	container: 'map_area',
+	geocode: {lat: '37.399767468078345', lng: '126.71138288062747'},
+	scrollwheel: false,
+	marker: marker,
+};
+</script>
+<script type="text/javascript" src="http://view3.net/_outline/kakaomap.js"></script>

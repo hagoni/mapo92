@@ -1,0 +1,66 @@
+/* main_visual */
+.main_visual_wrap{padding-top:191px}
+.main_visual{height:806px;background-image:url('../img/main/mv_video.jpg')}
+.main_visual .mv_video{top:50%;margin-left:-1000px;margin-top:-403px;width:2000px;height:806px}
+.main_visual .mv_ovl{top:0;left:0;width:100%;height:100%;background-image:url('../img/main/mv_ovl.png')}
+.main_visual .mv_ttl_wrap{top:108px;margin-left:-394px;width:787px;height:587px;background:url('../img/main/mv_ttl_ovl.png')no-repeat center}
+.main_visual .mv_ttl_wrap li{opacity:0;position:absolute;left:0;top:0}
+.main_visual .mv_ttl_wrap li.on{opacity:1}
+.main_visual .mv_store{top:0;margin-left:-1000px}
+@media screen and (min-width:2000px){
+    .main_visual .mv_video{margin-left:-1280px;margin-top:-516px;width:2560px;height:1032px}
+}
+
+/* layer1 */
+.layer1{padding:100px 0 80px}
+.layer1 li{position:relative;width:31.7778%;height:582px;box-sizing:border-box}
+.layer1 li.li1{margin-top:42px;background-image:url('../img/main/lyr1_li1.jpg')}
+.layer1 .video_area{top:0;margin-left:-286px;width:572px;height:582px}
+.layer1 .text_area{position:relative;z-index:1}
+.layer1 li.li2{width:36.4444%;height:666px;background-image:url('../img/main/lyr1_li2.jpg');position:relative;z-index:1}
+.layer1 li.li3{margin-top:42px;background-image:url('../img/main/lyr1_li3.jpg')}
+.layer1 li .line{position:absolute;left:10px;top:10px;width:calc(100% - 20px);height:calc(100% - 20px);border:5px solid #070002;box-sizing:border-box}
+.layer1 .li_ttl{padding:103px 0 24px}
+.layer1 .li_text{font-size:18px;line-height:156%;color:#444}
+.layer1 .li2 .li_text{color:#f6caca;position:relative;z-index:1}
+.layer1 .li3 .li_text{color:#d9c9ad}
+.layer1 .chopstick{top:288px;margin-left:-102px}
+.layer1 .li2_crst{position:absolute;left:0;top:0;width:100%;height:100%;background-repeat:no-repeat;background-position:center}
+.layer1 .li2_crst1{background-image:url('../img/main/lyr1_li2_1.png')}
+.layer1 .li2_crst2{background-image:url('../img/main/lyr1_li2_2.png')}
+.layer1 .li2_crst3{background-image:url('../img/main/lyr1_li2_3.png')}
+.layer1 .li2_crst4{background-image:url('../img/main/lyr1_li2_4.png')}
+.layer1 .li2_crst5{background-image:url('../img/main/lyr1_li2_5.png')}
+.layer1 .li2_crst6{background-image:url('../img/main/lyr1_li2_6.png')}
+.layer1 .li2_crst7{background-image:url('../img/main/lyr1_li2_7.png')}
+.layer1 .li2_smog{position:absolute;left:0;top:0;width:100%;height:100%;background:url('../img/main/lyr1_li2_smog.png')no-repeat center}
+.layer1 .li2_kettle{position:absolute;left:50%;top:208px;margin-left:150px}
+
+/* layer2 */
+.layer2{padding-bottom:100px}
+.layer2 .lyr2_ttl{padding-bottom:50px}
+.layer2 .no-slide li{margin-left:1.7778%;margin-bottom:1.7778%;;box-sizing:border-box}
+.layer2 .no-slide li:nth-child(3n-2){margin-left:0}
+.layer2 .lyr2_img{position:relative;width:23.6667%;height:48.19%}
+.layer2 .lyr2_vid{position:relative;width:49.1110%;height:48.19%}
+.layer2 .lyr2_vid .video{position:absolute;left:0;top:0;width:100%;height:100%}
+.layer2 .lyr2_img .video{position:absolute;left:0;top:0;width:100%;height:100%}
+.lyr2_slide{width:100%}
+.lyr2_slide .swiper-slide{width:25.4444%}
+.lyr2_slide .swiper-slide:first-child{margin-left:0}
+.lyr2_slide a{display:block;width:93.0131%}
+.lyr2_slide .ico{position:absolute;left:20px;top:20px}
+
+/* layer3 */
+.layer3{padding-bottom:100px}
+.layer3 .title_area{width:100%;height:90px;background-color:#000;line-height:90px;text-align:center}
+.layer3 .lyr3_slide_wrap{padding:40px 0;border:5px solid #070002;border-top:0}
+.lyr3_slide{width:100%;height:484px}
+.lyr3_slide .swiper-container{overflow:visible;width:1180px}
+.lyr3_slide .swiper-slide{width:1180px;height:484px}
+.lyr3_slide .swiper-slide a{position:relative;display:block;width:100%;height:100%;background:url('../img/main/lyr3_vid.jpg')no-repeat center;background-size:cover}
+.lyr3_slide .video_area{left:0;top:0;width:100%;height:100%}
+.lyr3_slide .sl_mngr{left:0;top:0;z-index:1}
+.lyr3_slide .mng_text{left:318px;top:410px;height:45px;background-color:#000;padding:0 25px 0 90px;font-family:'NotoSansKR-Medium';font-size:22px;line-height:45px;letter-spacing:-0.025em;color:#fff}
+.lyr3_slide .text_box{left:698px;top:30px;width:452px;height:425px;padding:55px 0 0 65px;border:5px solid rgba(255,255,255,0.2);box-sizing:border-box}
+.lyr3_slide .text_box .sl_text{padding-top:36px;font-family:'NotoSansKR-Medium';font-size:25px;letter-spacing:-0.025em;color:#fff}

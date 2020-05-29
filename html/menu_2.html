@@ -1,0 +1,56 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.pan{padding-bottom:100px}
+.pan_img{width:870px;height:1232px;margin:0 auto;background:url('../img/page/menu/02/pan_img.jpg')no-repeat center}
+.pan_list{position:absolute;left:33px;top:518px}
+.pan_list li{width:300px;height:40px}
+.pan_list li:first-child{margin-bottom:54px}
+.pan_list li:nth-child(2){margin-bottom:7px}
+.pan_list li:nth-child(3){margin-bottom:194px}
+.pan_list li a{display:block;width:100%;height:100%;border:0px solid #9e2618;box-sizing:border-box;font-size:0}
+.pan_list li.on a, .pan_list li a:hover{border-width:2px}
+.view_imgs{position:absolute;left:352px;top:518px;width:486px;height:461px}
+.view_imgs li{opacity:0;position:absolute;left:0;top:0;background:url('../img/page/menu/02/pan_bg.png')no-repeat center}
+.view_imgs li.on{opacity:1}
+</style>
+        <!-- 메뉴판 start -->
+        <div class="pan rel">
+            <div class="pan_img rel">
+                <ul class="pan_list">
+                    <li><a href="#none">마포갈매기</a></li>
+                    <!-- <li><a href="#none">양념갈매기</a></li> -->
+                    <li><a href="#none">매콤갈매기</a></li>
+                    <li><a href="#none">냉동삼겹살</a></li>
+                    <!-- <li><a href="#none">목살양념구이</a></li> -->
+                    <!-- <li><a href="#none">항정살</a></li> -->
+                    <!-- <li><a href="#none">돼지껍딱</a></li> -->
+                    <!-- <li><a href="#none">꼼장어</a></li> -->
+                    <li><a href="#none">닭발</a></li>
+                    <!-- <li><a href="#none">소갈비살</a></li> -->
+                </ul>
+                <ul class="view_imgs">
+                    <li><img src="<?=$root?>/img/page/menu/02/menu_img1.png" alt=""></li>
+                    <!-- <li><img src="<?=$root?>/img/page/menu/02/menu_img1.png" alt=""></li> -->
+                    <li><img src="<?=$root?>/img/page/menu/02/menu_img3.png" alt=""></li>
+                    <li><img src="<?=$root?>/img/page/menu/02/menu_img4.png" alt=""></li>
+                    <!-- <li><img src="<?=$root?>/img/page/menu/02/menu_img1.png" alt=""></li> -->
+                    <!-- <li><img src="<?=$root?>/img/page/menu/02/menu_img1.png" alt=""></li> -->
+                    <!-- <li><img src="<?=$root?>/img/page/menu/02/menu_img1.png" alt=""></li> -->
+                    <!-- <li><img src="<?=$root?>/img/page/menu/02/menu_img1.png" alt=""></li> -->
+                    <li><img src="<?=$root?>/img/page/menu/02/menu_img9.png" alt=""></li>
+                    <!-- <li><img src="<?=$root?>/img/page/menu/02/menu_img1.png" alt=""></li> -->
+                </ul>
+            </div>
+        </div>
+        <!-- //메뉴판 end -->
+<script>
+$(".pan_img li").hover(function(){
+	var index = $(".pan_img li").index(this);
+	$(".view_imgs li").eq(index).toggleClass("on");
+});
+</script>
+<?php
+include_once('../inc/bottom.php');
+?>

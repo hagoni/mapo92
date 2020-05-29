@@ -1,0 +1,294 @@
+<?
+function checkMobile() {
+    if(preg_match('/Android|BlackBerry|Blazer|Bolt|Doris|Dorothy|Fennec|GoBrowser|IEMobile|iPhone|iPod|Iris|Maemo|MIB|Minimo|NetFront|Opera Mini|Opera Mobi|SEMC-Browser|Skyfire|SymbianOS|TeaShark|Teleca|uZardWeb/', $_SERVER['HTTP_USER_AGENT']) > 0)  {
+        return true;
+    }
+}
+@session_start();
+$_SESSION['mobile'] = strpos($_SERVER['QUERY_STRING'], 'mobile') > -1 ? true : false;
+$protocol = $_SERVER['HTTPS'] == 'on' ? 'https://' : 'http://';
+$domain = str_replace('www.', '', $_SERVER['SERVER_NAME']);
+$m_url = $protocol.'m.'.$domain;
+// $m_url = $protocol.$domain.'/m';
+if(checkMobile() == true && $_SESSION['mobile'] != true) {
+	$_SERVER['QUERY_STRING'] ? header('Location: '.$m_url.'?'.$_SERVER['QUERY_STRING']) : header('Location: '.$m_url);
+	exit;
+}
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"./view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $root;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=1260">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+
+<!-- wrap start -->
+<div id="wrap">
+<?php
+include_once('inc/header.php');
+?>
+	<!-- main_visual start -->
+	<div class="main_visual_wrap rel" data-motion-offset="1">
+		<div class="main_visual rel over_h bg">
+			<div class="mv_video l50">
+				<iframe src="//player.vimeo.com/video/402462971?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+			</div>
+			<div class="mv_ovl abs bg"></div>
+			<ul class="mv_ttl_wrap l50 el1_2">
+				<li><img src="<?=$root?>/img/main/mv_ttl1.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl2.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl3.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl4.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl5.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl6.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl7.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl8.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl9.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl10.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl11.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl12.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl13.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl14.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl15.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl16.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl17.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl18.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl19.png" alt=""></li>
+				<li><img src="<?=$root?>/img/main/mv_ttl20.png" alt=""></li>
+			</ul>
+		</div>
+	</div>
+	<!-- //main_visual end -->
+	<!-- layer1 start -->
+	<div class="layer1 max_1800">
+		<ul class="fs_def t_center">
+			<li class="li1 bg over_h">
+				<div class="video_area l50">
+					<iframe src="//player.vimeo.com/video/392899853?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>
+				<div class="text_area">
+					<p class="li_ttl"><img src="<?=$root?>/img/main/lyr1_ttl1.png" alt="술맛나는 고깃집 레트로 마갈"></p>
+					<p class="li_text">보다 견고한 정체성을 구축하기 위한<br>또 한 번의 도전입니다.</p>
+				</div>
+			</li>
+			<li class="li2 bg">
+				<span class="line"></span>
+				<p class="li_ttl"><img src="<?=$root?>/img/main/lyr1_ttl2.png" alt="더 낭만적이고 맛있게 헬-로 마갈!"></p>
+				<p class="li_text">대한민국 대표 서민고깃집<br>더한층 술맛나는 콘셉트로 돌아오다.</p>
+				<div class="li2_crst1 li2_crst el2_2"></div>
+				<div class="li2_crst2 li2_crst el2_3"></div>
+				<div class="li2_crst3 li2_crst el2_4"></div>
+				<div class="li2_crst4 li2_crst el2_5"></div>
+				<div class="li2_crst5 li2_crst el2_6"></div>
+				<div class="li2_crst6 li2_crst el2_7"></div>
+				<div class="li2_crst7 li2_crst el2_8"></div>
+				<div class="li2_smog"></div>
+				<div class="li2_kettle"><img src="<?=$root?>/img/main/lyr1_li2_kettle.png" alt=""></div>
+			</li>
+			<li class="li3 bg over_h">
+				<div class="chopstick l50 el2_1"><img src="<?=$root?>/img/main/lyr1_chop.png" alt=""></div>
+				<p class="li_ttl"><img src="<?=$root?>/img/main/lyr1_ttl3.png" alt="12년 장수 고깃집 7,900원"></p>
+				<p class="li_text">12년동안 메뉴구성은 그대로<br>아주 조금만 더 받겠습니다.</p>
+			</li>
+		</ul>
+		 <div data-motion-offset="2"></div>
+	</div>
+	<!-- //layer1 end -->
+	<!-- layer2 start -->
+	<div class="layer2 max_1800 t_center">
+		<p class="lyr2_ttl"><img src="<?=$root?>/img/main/lyr2_ttl.png" alt="고기 한점에 술한잔 기울이는, 정겨운 추억 속으로"></p>
+		<div class="lyr2_wrap rel">
+			<ul class="no-slide fs_def">
+				<li class="lyr2_img1 lyr2_img">
+					<img src="<?=$root?>/img/main/lyr2_img2.jpg" alt="" class="w100">
+					<div class="video"><iframe src="//player.vimeo.com/video/392653097?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+				</li>
+				<li class="lyr2_vid">
+					<img src="<?=$root?>/img/main/lyr2_vid1_20200331.jpg" alt="" class="w100">
+					<div class="video"><iframe src="//player.vimeo.com/video/402474151?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+				</li>
+				<li class="lyr2_img"><img src="<?=$root?>/img/main/lyr2_img1.jpg" alt="" class="w100"></li>
+
+			</ul>
+			<div class="lyr2_slide abs">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+<?
+$sns_sql = "select * from ".TABLE_LEFT."social_01 where view3_main = 1 order by view3_order desc, view3_write_day desc";
+$sns_res = mysql_query($sns_sql);
+while ($sns_lst = mysql_fetch_assoc($sns_res)) {
+	$sns_img = explode("||",$sns_lst['view3_file']);
+?>
+						<!-- <li class="swiper-slide">
+							<a href="<?=$sns_lst['view3_link']?>" target="_blank">
+								<span class="blank"><img src="<?=$root?>/upload/social_01<?=$sns_img[0]?>" alt="" class="w100"></span>
+								<span class="ico"><img src="<?=$root?>/img/main/ico_<?=$sns_lst['view3_special_01']?>.png" alt=""></span>
+							</a>
+						</li> -->
+<?
+}
+?>
+						<!-- <li class="swiper-slide">
+							<a href="#none" style="background-image:url('img/main/lyr2_img3.jpg')"><span class="blank"><img src="<?=$root?>/img/main/lyr2_blank.png" alt="" class="w100"></span><span class="ico"><img src="<?=$root?>/img/main/ico_fb.png" alt=""></span></a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('img/main/lyr2_img3.jpg')"><span class="blank"><img src="<?=$root?>/img/main/lyr2_blank.png" alt="" class="w100"></span><span class="ico"><img src="<?=$root?>/img/main/ico_fb.png" alt=""></span></a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('img/main/lyr2_img3.jpg')"><span class="blank"><img src="<?=$root?>/img/main/lyr2_blank.png" alt="" class="w100"></span><span class="ico"><img src="<?=$root?>/img/main/ico_fb.png" alt=""></span></a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('img/main/lyr2_img3.jpg')"><span class="blank"><img src="<?=$root?>/img/main/lyr2_blank.png" alt="" class="w100"></span><span class="ico"><img src="<?=$root?>/img/main/ico_fb.png" alt=""></span></a>
+						</li>
+						<li class="swiper-slide">
+							<a href="#none" style="background-image:url('img/main/lyr2_img3.jpg')"><span class="blank"><img src="<?=$root?>/img/main/lyr2_blank.png" alt="" class="w100"></span><span class="ico"><img src="<?=$root?>/img/main/ico_fb.png" alt=""></span></a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //layer2 end -->
+	<!-- layer3 start -->
+	<div class="layer3 max_1800">
+		<div class="title_area"><img src="<?=$root?>/img/main/lyr3_ttl.png" alt="대한민국 대표 서민-고깃집"></div>
+		<div class="lyr3_slide_wrap rel over_h">
+			<div class="lyr3_slide">
+				<div class="swiper-container h100">
+					<ul class="swiper-wrapper h100">
+						<li class="swiper-slide h100">
+							<div class="video_area abs">
+								<iframe src="//player.vimeo.com/video/402470074?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							</div>
+							<div class="line"></div>
+							<div class="text_box abs">
+								<p class="sl_ttl"><img src="<?=$root?>/img/main/lyr3_sl1_ttl_20200331.png" alt="일매출 350만원 돌파!"></p>
+								<p class="sl_text">간석점 / 임대료 500만원</p>
+							</div>
+						</li>
+						<li class="swiper-slide h100">
+							<div class="video_area abs">
+								<iframe src="//player.vimeo.com/video/402470142?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							</div>
+							<div class="line"></div>
+							<div class="text_box abs">
+								<p class="sl_ttl"><img src="<?=$root?>/img/main/lyr3_sl2_ttl_20200331.png" alt="일매출 350만원 돌파!"></p>
+								<p class="sl_text">호구포역점 / 임대료 550만원</p>
+							</div>
+						</li>
+						<li class="swiper-slide h100">
+							<div class="video_area abs">
+								<iframe src="//player.vimeo.com/video/402470180?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+							</div>
+
+							<div class="text_box abs">
+								<p class="sl_ttl"><img src="<?=$root?>/img/main/lyr3_sl3_ttl_20200331.png" alt="일매출 350만원 돌파!"></p>
+								<p class="sl_text">사우점 / 임대료 300만원</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //layer3 end -->
+<?php
+include_once('inc/footer.php');
+?>
+</div>
+<!-- //wrap end -->
+
+<script>
+var CONST_REQUEST_ROOT = '<?=$request_root?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$root?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/YMotion.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main.js?<?=$time?>"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+@include_once(BOARD_INC.'/view3_popup_03/list.php');
+@include_once(BOARD_INC.'/view3_popup_04/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+
+			}, 400);
+		}
+		new Popup('type02', {
+			callback: popupCallback
+		});
+		new Popup('type03', {
+			callback: popupCallback
+		});
+		new Popup('type04', {
+			callback: popupCallback
+		});
+
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

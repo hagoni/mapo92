@@ -1,0 +1,44 @@
+<?
+@include_once('../inc/top.php');
+?>
+<style>
+.layer1{padding-bottom:12.5vw}
+
+.layer2{height:132.8125vw;background-image:url('../img/page/brand/01/lyr2_bg.jpg')}
+.layer2 .lyr2_ttl{padding-top:15.625vw}
+
+.layer3{height:132.8125vw;background-image:url('../img/page/brand/01/lyr3_bg.jpg')}
+.layer3 .lyr3_ttl{padding:15.625vw 0 5vw}
+.layer3 .text{color:rgba(0,0,0,0.7)}
+
+.layer4{padding:9.375vw 0}
+.layer4 .lyr4_slide{padding-top:4.375vw}
+.lyr4_slide .swiper-slide{width:332.34375vw}
+</style>
+
+		<div class="layer1">
+			<div><img src="<?=$root?>/img/page/brand/01/lyr1_img.png" alt="" class="w100"></div>
+		</div>
+		<div class="layer2 bg">
+			<p class="lyr2_ttl"><img src="<?=$root?>/img/page/brand/01/lyr2_ttl.png" alt="진화하다" class="w100"></p>
+		</div>
+		<div class="layer3 bg">
+			<p class="lyr3_ttl"><img src="<?=$root?>/img/page/brand/01/lyr3_ttl.png" alt="더 낭만적으로 더 맛있음으로" class="w100"></p>
+			<!--<p class="text t_center">또 한 번 거세어진 마갈의 바람이 붑니다.</p>-->
+		</div>
+		<div class="layer4">
+			<div><img src="<?=$root?>/img/page/brand/01/lyr4_img.png" alt="" class="w100"></div>
+			<div class="lyr4_slide w100">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide">
+							<img src="<?=$root?>/img/page/brand/01/lyr4_sl.png" alt="" class="w100">
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+<script src="<?=$root?>/js/brand_1.js?<?=$time?>"></script>
+<?
+@include_once('../inc/bottom.php');
+?>

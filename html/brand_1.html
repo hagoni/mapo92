@@ -1,0 +1,143 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+html,body,#wrap{height:100%}
+.layer .text_area{left:260px;top:50%;
+-webkit-transform:translateY(-50%);
+transform:translateY(-50%);
+}
+
+/* layer1 */
+.layer1{height:733px;margin-bottom:100px;background:url('../img/page/brand/01/lyr1_img1.jpg')no-repeat center}
+.layer1 .lyr1_in{position:absolute;left:50%;top:0;margin-left:-900px;width:1800px;height:733px}
+.layer1 .lyr1_in .cont1{overflow:hidden;left:0;top:0;width:100%;height:100%;z-index:1;
+/* transition:all 1s ease; */
+}
+.layer1 .lyr1_in .cont2{overflow:hidden;right:0;top:0;width:50%;height:100%;z-index:2;
+/* transition:all 1s ease; */
+}
+.layer1 .lyr1_in .cont2 img{float:right}
+.layer1 .lyr1_in .cont1_hover{position:absolute;left:0;top:0;width:50%;height:100%;cursor:pointer;z-index:5}
+.layer1 .lyr1_in .cont2_hover{position:absolute;right:0;top:0;width:50%;height:100%;cursor:pointer;z-index:5}
+.layer1 .lyr1_in .cont1_hover:hover + .cont1{width:100%;z-index:1}
+.layer1 .lyr1_in .cont2_hover:hover + .cont2{width:100%;z-index:1}
+.layer1 .motion-offset{position:absolute;left:0;top:70%}
+
+/* layer2 */
+.layer2{background-image:url('../img/page/brand/01/lyr2_img.jpg')}
+.layer2 .lyr2_smog{left:0;top:0;width:100%;height:100%;background-image:url('../img/page/brand/01/lyr2_smog.png')}
+.layer2 .lyr2_ttl1{margin-bottom:20px}
+.layer2 .lyr2_ttl2{position:relative;width:435px;height:145px;margin-bottom:60px;background:url('../img/page/brand/01/lyr2_ttl2.png')no-repeat center}
+.layer2 .lyr2_num{position:absolute;left:90px;top:8px;width:81px;height:117px;background-repeat:no-repeat;background-position:0 0;background-image:url('../img/page/brand/01/lyr2_num.png')}
+.layer2 .lyr2_slide{width:520px}
+.layer2 li{width:250px;height:250px}
+
+/* layer3 */
+.layer3{background-image:url('../img/page/brand/01/lyr3_img.jpg')}
+.layer3 .lyr3_text{padding:28px 0 46px;font-size:20px;letter-spacing:-0.025em;color:rgba(0,0,0,0.7)}
+.layer3 .lyr3_slide{width:520px}
+.layer3 li{width:250px;height:250px}
+.layer3 .lyr3_ttl{margin-bottom:60px}
+
+/* layer4 */
+.layer4 .lyr4_logo{top:262px;margin-left:-190px;z-index:10}
+.layer4 .lyr4_slide1{width:100%;height:100%}
+.layer4 .lyr4_slide1 .swiper-container{height:1139px}
+.layer4 .lyr4_slide1 .swiper-wrapper{display:block}
+.layer4 .lyr4_slide1 .swiper-slide{animation:vertical-slide 20s linear;height:1139px;margin-bottom:100px}
+.layer4 .lyr4_slide1 .swiper-slide .slide_cont{position:relative;width:1230px;height:1139px;margin:0 auto}
+.layer4 .lyr4_slide1 .swiper-slide .slide_cont > div{position:absolute}
+.layer4 .lyr4_slide1 .lyr4_vid1{left:0;top:0;width:495px;height:400px;background-image:url('../img/page/brand/01/lyr4_vid1.jpg')}
+.layer4 .lyr4_slide1 .lyr4_insta1{left:-134px;top:490px}
+.layer4 .lyr4_slide1 .lyr4_img1{left:210px;top:759px;z-index:1}
+.layer4 .lyr4_slide1 .lyr4_insta2{left:945px;top:147px}
+.layer4 .lyr4_slide1 .lyr4_img2{left:810px;top:687px}
+.layer4 .lyr4_slide1 /*.insta_ico{position:absolute;left:20px;top:20px;width:36px;height:36px;background:url('../img/page/brand/01/insta_logo.png')no-repeat center}*/
+.layer4 .lyr4_slide2{left:0;bottom:40px;width:100%;z-index:2}
+.layer4 .lyr4_slide2 .swiper-slide{width:2750px;margin-right:95px}
+</style>
+    <!-- layer1 start -->
+    <div class="layer1 over_h max_1800">
+        <div class="lyr1_in">
+            <div class="cont1_hover"></div>
+            <div class="cont1 abs el2_1"><img src="<?=$root?>/img/page/brand/01/lyr1_img1.jpg" alt=""></div>
+            <div class="cont2_hover"></div>
+            <div class="cont2 abs el2_2"><img src="<?=$root?>/img/page/brand/01/lyr1_img2.jpg" alt=""></div>
+        </div>
+        <div class="motion-offset" data-motion-offset="2"></div>
+    </div>
+    <!-- //layer1 end -->
+    <!-- layer2 start -->
+    <div class="layer2 layer h100 rel bg" data-motion-offset="1">
+        <div class="lyr2_smog abs bg el1_1"></div>
+        <div class="text_area abs">
+            <p class="lyr2_ttl1"><img src="<?=$root?>/img/page/brand/01/lyr2_ttl1.png" alt="12년 전 7,500원 400원만 더!"></p>
+            <!--<div class="lyr2_ttl2">
+                <div class="lyr2_num el1_2"></div>
+            </div>-->
+            <div class="lyr2_slide">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr2_sl_1.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr2_sl_2.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr2_sl_3.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr2_sl_4.jpg" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //layer2 end -->
+    <!-- layer3 start -->
+    <div class="layer3 layer h100 rel bg">
+        <div class="text_area abs">
+            <p class="lyr3_ttl"><img src="<?=$root?>/img/page/brand/01/lyr3_ttl.png" alt="더 낭만적으로 더 맛있음으로"></p>
+            <!--<p class="lyr3_text">또 한 번 거세어진 마갈의 바람이 붑니다.</p>-->
+            <div class="lyr3_slide">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr3_sl_1.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr3_sl_2.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr3_sl_3.jpg" alt=""></li>
+                        <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr3_sl_4.jpg" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //layer3 end -->
+    <!-- layer4 start -->
+    <div class="layer4 h100 rel bg over_h">
+        <div class="lyr4_slide1 rel">
+            <div class="lyr4_logo l50"><img src="<?=$root?>/img/page/brand/01/lyr4_center.png" alt=""></div>
+            <div class="swiper-container">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide">
+                        <div class="slide_cont">
+                            <div class="lyr4_vid1">
+                                <iframe src="//player.vimeo.com/video/392616187?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                            <div class="lyr4_insta1"><span class="insta_ico"></span><img src="<?=$root?>/img/page/brand/01/lyr4_insta1.jpg" alt=""></div>
+                            <div class="lyr4_img1"><img src="<?=$root?>/img/page/brand/01/lyr4_img1.jpg" alt=""></div>
+                            <div class="lyr4_insta2"><span class="insta_ico"></span><img src="<?=$root?>/img/page/brand/01/lyr4_insta2.jpg" alt=""></div>
+                            <div class="lyr4_img2"><img src="<?=$root?>/img/page/brand/01/lyr4_img2.jpg" alt=""></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="lyr4_slide2 abs">
+            <div class="swiper-container">
+                <ul class="swiper-wrapper">
+                    <li class="swiper-slide"><img src="<?=$root?>/img/page/brand/01/lyr4_text.png" alt=""></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //layer4 end -->
+<script src="<?=$root?>/js/YMotion.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/brand_1.js?<?=$time?>"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

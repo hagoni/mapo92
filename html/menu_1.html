@@ -1,0 +1,45 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.page_title_area .page_text{display:none}
+
+.video_area{width:1230px;height:692px;margin:0 auto;background:url('../img/page/menu/01/menu_video.jpg')no-repeat center;position:relative;z-index:10;background-size:cover}
+.layer{margin-top:-202px;padding-bottom:100px}
+.layer .text_area{height:1098px;background:url('../img/page/menu/01/lyr_bg.jpg')no-repeat center;box-sizing:border-box}
+.layer .lyr_text{padding:360px 0 24px}
+.layer .lyr_img{bottom:-375px;margin-left:-478px}
+.layer .title_area{height:140px;background:url('../img/page/menu/01/lyr_ttl_bg.jpg')no-repeat center;line-height:140px}
+.bg_motion{position:absolute;left:0;bottom:0;width:100%;height:618px}
+.bg_motion > div{position:absolute;left:0;top:0;width:100%;height:100%;background-repeat:no-repeat;background-position:center}
+.bg_motion .bg_motion1{background-image:url('../img/page/menu/01/bg_motion1.png')}
+.bg_motion .bg_motion2{background-image:url('../img/page/menu/01/bg_motion2.png')}
+.bg_motion .bg_motion3{background-image:url('../img/page/menu/01/bg_motion3.png')}
+</style>
+    <div class="over_h">
+        <div class="video_area">
+            <!-- <iframe src="//player.vimeo.com/video/392654983?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
+            <iframe src="//player.vimeo.com/video/392899994?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+        <!-- layer start -->
+        <div class="layer max_1800">
+            <div class="text_area over_h rel t_center">
+                <div class="bg_motion">
+                    <div class="bg_motion1 el1_1"></div>
+                    <div class="bg_motion2 el1_2"></div>
+                    <div class="bg_motion3 el1_3"></div>
+                </div>
+                <p class="lyr_text"><img src="<?=$root?>/img/page/menu/01/lyr_text.png" alt="눈물나게 따끔한 질책으로 또 때로는 넘치는 사랑으로"></p>
+                <p class="text">그렇게 차갑고 뜨거운 성원의 온도를 반복하여 12년간 모두와 함께 만들어 왔습니다.</p>
+                <div class="lyr_img l50"><img src="<?=$root?>/img/page/menu/01/lyr_img.png" alt=""></div>
+            </div>
+            <div data-motion-offset="1"></div>
+            <div class="title_area t_center"><img src="<?=$root?>/img/page/menu/01/lyr_ttl.png" alt="오늘보다 맛있는 내일 마갈 향상심에 멈춤은 없습니다"></div>
+        </div>
+        <!-- //layer end -->
+    </div>
+<script src="<?=$root?>/js/YMotion.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/menu_1.js?<?=$time?>"></script>
+<?php
+include_once('../inc/bottom.php');
+?>

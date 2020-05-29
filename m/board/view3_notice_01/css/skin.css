@@ -1,0 +1,27 @@
+
+body{background-color:#ece9dd}
+
+.page_text{display:none}
+
+.notice_wrap{width:89.0625vw;margin:0 auto}
+.notice_table{table-layout:fixed;width:100%}
+.notice_table .col1{width:21.875vw}
+.notice_table .col2{width:67.1875vw}
+.notice_table th, .notice_table td{vertical-align:middle;border-bottom:1px solid rgba(0,0,0,0.1);letter-spacing:-0.025em}
+.notice_table th{height:12.5vw;font-family:'NotoSansKR-Bold';font-size:3.4375vw;color:#222;border-top:1px solid #000}
+.notice_table td{padding:0 3.75vw;height:18.75vw;font-family:'NotoSansKR-Medium';font-size:3.75vw;color:#444}
+.notice_table td a{display:block;width:100%}
+.notice_table td.num{font-family:'NotoSansKR-Bold';font-size:3.4375vw;color:#222}
+.notice_table td.num .label{display:inline-block;padding:0.46875vw 1.5625vw 0.78125vw;font-size:3.125vw;background-color:#99223e;color:#fff}
+
+.notice_view .page_title{font-size:4.6875vw;padding-bottom:3.75vw;border-bottom:0.3125vw solid #000;text-align:center}
+.notice_view .date{padding:4.6875vw 0 8.75vw;font-family:'NotoSansKR-Regular';font-size:3.75vw;letter-spacing:-0.025em;color:#444}
+.notice_view .view_cont{padding:0 3.90625vw}
+.notice_view .view_cont p{font-family:'NotoSansKR-Regular';font-size:3.75vw;line-height:192%;letter-spacing:-0.025em;color:#444}
+.notice_view .view_cont img{max-width:100% !important;height:auto !important;}
+
+.view_share{padding:10.625vw 0 9.375vw;border-bottom:0.15625vw solid rgba(0,0,0,0.2)}
+.view_share li{margin-left:5.625vw}
+.view_share li:first-child{margin-left:0}
+.view_share li a{display:block;width:12.65625vw}
+

@@ -1,0 +1,239 @@
+<?
+######################################################################################################################################################
+//VIEW3 BOARD 1.0
+######################################################################################################################################################
+define('_VIEW3BOARD_', TRUE);
+define('MAIN_TYPE',													'MAIN',TRUE);
+@include_once														"../view3.php";
+######################################################################################################################################################
+$html_idx = "12";//유저게시판
+######################################################################################################################################################
+$settings_sql = 'SELECT * FROM `'.TABLE_LEFT.'settings` WHERE `key`="info";';
+$settings_query = mysql_query($settings_sql);
+$settings_raw = mysql_fetch_assoc($settings_query);
+$settings_data = unserialize($settings_raw['val']);
+$sitename = htmlentities($settings_data['title'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$description = htmlentities($settings_data['desc'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$keywords = htmlentities($settings_data['keyword'], ENT_QUOTES | ENT_IGNORE, "UTF-8");
+$canonical = htmlentities($settings_data['canonical'], ENT_QUOTES | ENT_IGNORE, "UTF-8").$_SERVER[REQUEST_URI];
+$site_uri = urlencode(PROTOCOL.$_SERVER[SERVER_NAME].$_SERVER[REQUEST_URI]);
+$og_image = $def_og_image;
+######################################################################################################################################################
+$request_root = $pc;
+$time = time();
+?>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="<?=htmlentities($settings_data['naver_webmastertools_key'], ENT_QUOTES | ENT_IGNORE, "UTF-8");?>">
+<meta name="description" content="<?=$description?>">
+<meta name="keywords" content="<?=$keywords?>">
+<meta name="author" content="">
+<meta property="og:title" content="<?=$sitename?>">
+<meta property="og:url" content="<?=$site_uri?>">
+<meta property="og:description" content="<?=$description?>">
+<meta property="og:type" content="website">
+<meta property="og:image" content="<?=$og_image?>">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?=$sitename?>">
+<meta name="twitter:url" content="<?=$site_uri?>">
+<meta name="twitter:description" content="<?=$description?>">
+<meta name="twitter:image" content="<?=$og_image?>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title><?=$sitename?></title>
+<link rel="canonical" href="<?=$canonical?>">
+<link rel="shortcut icon" href="<?=$root?>/img/favicon.ico">
+<link rel="apple-touch-icon" href="<?=$root?>/img/apple-touch-icon.png">
+<link rel="stylesheet" href="<?=$root?>/css/style.css?<?=$time?>">
+<link rel="stylesheet" href="<?=$root?>/css/main.css?<?=$time?>">
+</head>
+<body>
+
+<!-- 건너뛰기 링크 시작 -->
+<dl id="skiptoContent">
+	<dt>바로가기 메뉴</dt>
+	<dd><a href="#navigation" class="skip">네비게이션 바로가기</a></dd>
+	<dd><a href="#content" class="skip">본문 바로가기</a></dd>
+</dl>
+<!-- //건너뛰기 링크 끝 -->
+<div id="wrap">
+<?
+@include_once('inc/header.php');
+?>
+	<!-- h start -->
+	<!-- //h end -->
+	<!-- main_visual start -->
+	<div class="main_visual bg rel">
+		<div class="mv_video">
+			<div class="video_wrap">
+				<div class="video_inner">
+					<iframe src="//player.vimeo.com/video/403255307?quality=1080p&amp;autopause=0&amp;playsinline=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline="" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+				</div>
+			</div>
+		</div>
+		<p class="mv_ttl rel"><img src="<?=$root?>/img/main/mv_ttl.png" alt="마포갈매기는 항상 여러분의 곁에 있었습니다." class="w100"></p>
+		<div class="mv_img rel"><img src="<?=$root?>/img/main/mv_img.png" alt="" class="w100"></div>
+	</div>
+	<!-- //main_visual end -->
+	<div class="layer1">
+		<div class="lyr1_slide">
+			<div class="swiper-container">
+				<ul class="swiper-wrapper">
+					<li class="swiper-slide">
+						<div class="sl_inner li1 bg">
+							<p class="sl_ttl"><img src="<?=$root?>/img/main/lyr1_slttl1.png" alt="더 낭만적이고 맛있게 헬로 마갈!" class="w100"></p>
+							<p class="sl_text t_center">
+								대한민국 대표 국민고깃집<br>
+								한층 술맛나는 콘셉트로 진화하다.
+							</p>
+						</div>
+					</li>
+					<li class="swiper-slide">
+						<div class="sl_inner li2 bg">
+							<p class="sl_ttl"><img src="<?=$root?>/img/main/lyr1_slttl2.png" alt="술맛나는 고깃집 레트로 마갈" class="w100"></p>
+							<p class="sl_text t_center">
+								보다 견고한 정체성을 구축하기 위한<br>
+								또 한 번의 도전입니다.
+							</p>
+						</div>
+					</li>
+					<li class="swiper-slide">
+						<div class="sl_inner li3 bg">
+							<p class="sl_ttl"><img src="<?=$root?>/img/main/lyr1_slttl3.png" alt="11년 장수 고깃집 7,900원" class="w100"></p>
+							<p class="sl_text t_center">
+								12년 동안 메뉴구성은 그대로<br>
+								아주 조금만 더 받겠습니다.
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="layer2">
+		<p class="lyr2_ttl"><img src="<?=$root?>/img/main/lyr2_ttl.png" alt="" class="w100"></p>
+		<div class="lyr2_video inner560">
+			<div class="video_wrap bg">
+				<div class="video_inner">
+					<iframe src="//player.vimeo.com/video/392653097?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&muted=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+		<div class="lyr2_list inner560 swiper-container">
+			<ul class="swiper-wrapper">
+	<?
+	$sns_sql = "select * from ".TABLE_LEFT."social_01 where view3_main = 1 order by view3_order desc, view3_write_day desc";
+	$sns_res = mysql_query($sns_sql);
+	while ($sns_lst = mysql_fetch_assoc($sns_res)) {
+		$sns_img = explode("||",$sns_lst['view3_file']);
+	?>
+				<!-- <li class="swiper-slide">
+					<a href="<?=$sns_lst['view3_m_link']?>" target="_blank">
+						<img src="<?=$request_root?>/upload/social_01<?=$sns_img[1]?>" alt="" class="w100">
+						<span class="sl_sns blog"></span>
+					</a>
+				</li> -->
+	<?
+	}
+	?>
+				<!-- <li><img src="<?=$root?>/img/main/lyr2_img1.jpg" alt="" class="w100"></li>
+				<li><img src="<?=$root?>/img/main/lyr2_img2.jpg" alt="" class="w100"></li> -->
+			</ul>
+		</div>
+	</div>
+	<div class="layer3">
+		<div class="inner560">
+			<p class="lyr3_ttl"><img src="<?=$request_root?>/img/main/lyr3_ttl.png" alt="대한민국 대표 국민-고깃집" class="w100"></p>
+			<div class="lyr3_slide rel">
+				<div class="swiper-container">
+					<ul class="swiper-wrapper">
+						<li class="swiper-slide">
+							<div class="sl_img bg" style="background-image:url('<?=$root?>/img/main/lyr3_bg_20200331.jpg')">
+								<div class="sl_vid">
+									<iframe src="//player.vimeo.com/video/402470036?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+								</div>
+								<p class="sl_text">간석점(임대료 500만원)</p>
+							</div>
+							<div class="bg_wrap">
+								<div class="sl_ttl bg" style="background-image:url('<?=$root?>/img/main/lyr3_slttl1.png')"></div>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<div class="sl_img bg" style="background-image:url('<?=$root?>/img/main/lyr3_bg_20200331.jpg')">
+								<div class="sl_vid">
+									<iframe src="//player.vimeo.com/video/402470088?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+								</div>
+								<p class="sl_text">호구포역점(임대료 550만원)</p>
+							</div>
+							<div  class="bg_wrap">
+								<div class="sl_ttl bg" style="background-image:url('<?=$root?>/img/main/lyr3_slttl2.png')"></div>
+							</div>
+						</li>
+						<li class="swiper-slide">
+							<div class="sl_img bg" style="background-image:url('<?=$root?>/img/main/lyr3_bg_20200331.jpg')">
+								<div class="sl_vid">
+									<iframe src="//player.vimeo.com/video/402470164?quality=1080p&autopause=0&playsinline=1&autoplay=1&loop=1&background=1" allow="autoplay" width="100%" height="100%" frameborder="0" playsinline webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+								</div>
+								<p class="sl_text">사우점(임대료 300만원)</p>
+							</div>
+							<div class="bg_wrap">
+								<div class="sl_ttl bg" style="background-image:url('<?=$root?>/img/main/lyr3_slttl3.png')"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<ul class="lyr3_paging fs_def t_center">
+                    <li class="swiper-pagination-bullet-active"><a href="#none"></a></li>
+                    <li><a href="#none"></a></li>
+                </ul>
+			</div>
+		</div>
+	</div>
+<?
+@include_once('inc/footer.php');
+?>
+<?
+@include_once('inc/sitemap.php');
+?>
+<?
+@include_once('inc/pop_inq.php');
+?>
+</div>
+<script>
+var CONST_REQUEST_ROOT = '<?=$pc?>';
+var CONST_ROOT = '<?=$root?>';
+var CONST_SITENAME = '<?=str_replace(' ', '', $sitename)?>';
+</script>
+<script src="<?=$root?>/js/jquery-1.12.0.min.js"></script>
+<script src="<?=$pc?>/freebest/inquiry.js"></script>
+<script src="<?=$root?>/js/common.js?<?=$time?>"></script>
+<script src="<?=$root?>/js/main.js?<?=$time?>"></script>
+<?
+@include_once(BOARD_INC.'/view3_popup_01/list.php');
+@include_once(BOARD_INC.'/view3_popup_02/list.php');
+?>
+<script>
+(function($) {
+	$(document).ready(function() {
+		function popupCallback() {
+			setTimeout(function() {
+
+			}, 400);
+		}
+		new Popup('m_type01', {
+			callback: popupCallback
+		});
+		new Popup('m_type02', {
+			callback: popupCallback
+		});
+	});
+}(jQuery));
+</script>
+<?
+@include_once(ROOT_INC.'/statistics_include.php');
+?>
+
+</body>
+</html>

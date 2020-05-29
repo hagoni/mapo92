@@ -1,0 +1,24 @@
+/* layer1 */
+.layer1 .li1{width:100%;height:22.2222%;margin-bottom:2.1111%}
+.layer1 .li2{width:45%;height:22.7777%;margin-right:2.1111%}
+.layer1 .li3{position:relative;width:23.3333%;height:22.7777%;margin-right:2.0556%}
+.layer1 .li4{width:27.5%;height:22.7777%}
+.layer1 .text_area{width:100%;font-family:'NotoSansKR-Medium';font-size:25px;letter-spacing:-0.025em;line-height:156%;color:#000;text-align:center}
+@media screen and (max-width:1500px){
+    .layer1 .text_area{font-size:20px}
+}
+
+.tabmenu{padding:100px 0 60px}
+
+.interior_slider{position:relative;width:870px;margin:0 auto}
+.interior_slider .swiper-container{overflow:visible}
+.interior_slider .swiper-container li:before{opacity:0.6;content:'';position:absolute;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.4)}
+.interior_slider .swiper-container li.swiper-slide-active:before{opacity:0}
+.interior_slider .swiper-buttons{position:absolute;top:213px;width:75px;height:75px;background-repeat:no-repeat;font-size:0;line-height:0}
+.interior_slider .swiper-button-prev{left:-105px;background-image:url('../img/int_prev.jpg')}
+.interior_slider .swiper-button-next{right:-105px;background-image:url('../img/int_next.jpg')}
+.interior_paging{margin:40px 0 100px;text-align: center}
+.interior_paging:after{content:'';display:block;clear:both}
+.interior_paging li{width:16px;height:16px;margin-left:20px}
+.interior_paging li a{display:block;width:100%;height:100%;border-radius:50%;background-color:rgba(0,0,0,0.2)}
+.interior_paging li.swiper-pagination-bullet-active a, .interior_paging li:hover a{background-color:#cd0010}

@@ -1,0 +1,248 @@
+<?php
+include_once('../inc/top.php');
+?>
+<style>
+.page_title_area{padding:133px 0 50px}
+
+.location{padding-bottom:100px}
+.map_area{max-width:1800px;height:680px;margin:0 auto;background-color:#999}
+.location .box{z-index:1;top:83px;margin-left:-615px;width:600px;height:515px;padding:63px 0 0 50px;background:url('../img/page/com/05/loc_box.jpg')no-repeat center;box-sizing:border-box}
+.location .line{margin:55px 0 52px;display:inline-block;width:497px;height:1px;background-color:rgba(0,0,0,0.2)}
+.location li{margin-bottom:36px}
+.location li:last-child{margin-bottom:0}
+.location .li_ttl{padding-top:2px;width:182px}
+.location .li_text{font-size:20px;line-height:170%;letter-spacing:-0.025em;color:#555}
+</style>
+    <!-- location start -->
+    <div class="location rel">
+        <div class="map_area" id="map_area"></div>
+        <div class="box l50">
+            <div class="box_logo"><img src="<?=$root?>/img/page/com/05/loc_logo.png" alt="DIDIM"></div>
+            <span class="line"></span>
+            <ul>
+                <li class="fs_def">
+                    <p class="li_ttl"><img src="<?=$root?>/img/page/com/05/loc_li1.png" alt="대표번호"></p>
+                    <p class="li_text">032)819-6870</p>
+                </li>
+                <li class="fs_def">
+                    <p class="li_ttl"><img src="<?=$root?>/img/page/com/05/loc_li2.png" alt="주소"></p>
+                    <p class="li_text">인천광역시 남동구 논현로 46번길 39-24</p>
+                </li>
+                <li class="fs_def">
+                    <p class="li_ttl"><img src="<?=$root?>/img/page/com/05/loc_li3.png" alt="찾아오시는 길"></p>
+                    <p class="li_text">수인선 호구포역 2번출구<br>NH주택공사 앞 동원베네스트 오른쪽</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- //location end -->
+<?php
+include_once('../inc/bottom.php');
+?>
+
+<script type="text/javascript">
+<?
+$markerImgPath = '/design/other/marker.png';
+$markerImgSize = getImagesize(ROOT_INC.$markerImgPath);
+?>
+
+var marker = {
+	src: '<?=$pc.$markerImgPath?>',
+	offset: {x: <?=$markerImgSize[0] / 2?>, y: <?=$markerImgSize[1]?>},
+	size: {x: <?=$markerImgSize[0]?>, y: <?=$markerImgSize[1]?>}
+};
+var placeInfo = {
+	appkey: '<?=$settings_data['kakao_api_key'];?>',
+	container: 'map_area',
+	geocode: {lat: '37.399767468078345', lng: '126.71138288062747'},
+	scrollwheel: false,
+	marker: marker,
+};
+
+
+/**************************************************************************************************
+ * KakaoMap | Kakao map api를 이용하여 지도를 출력합니다.
+ *
+ * @class KakaoMap
+ * @constructor
+ * @version 1.0
+ *
+ * @param {Object} placeInfo 옵션 객체
+ *
+ **************************************************************************************************/
+(function($) {
+
+    'use strict';
+
+    window.KakaoMap = function(placeInfo) {
+
+    	var _this = this;
+
+    	var map,
+    		mapContainer = document.getElementById(placeInfo.container),
+    		mapOptions = {level: 4},
+    		marker,
+    		markerOptions,
+            rv,
+            resizeTimer = null;
+
+        var opt = {
+            mapTypeControl: true,
+            zoomControl: true
+        };
+
+    	/*
+    	 * KakaoMap class 초기화 함수
+    	 *
+    	 * @method initialize
+    	 */
+    	this.initialize = function() {
+            if(typeof placeInfo.scrollwheel === 'boolean') mapOptions.scrollwheel = false;
+            if(typeof placeInfo.level === 'number') mapOptions.level = placeInfo.level;
+            if(typeof placeInfo.mapTypeControl === 'boolean') opt.mapTypeControl = placeInfo.mapTypeControl;
+            if(typeof placeInfo.zoomControl === 'boolean') opt.zoomControl = placeInfo.zoomControl;
+    		var src = '//dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey='+ placeInfo.appkey;
+    		_this.cachedScript(src, function() {
+    			_this.mapLoad();
+    		});
+    	};
+		this.cachedScript = function( url, callback ) {
+			// kakao에서 timestamp 제거 요청으로 인한 처리 20181030 yoonwoo1023
+			var options = {
+				dataType: "script",
+				cache: true,
+				url: url,
+				success : callback
+			};
+			return jQuery.ajax( options );
+		};
+    	this.mapLoad = function() {
+    		daum.maps.load(function() {
+                var reg = /daumcdn|services\.js/g;
+                for(var i=0, src, res; i<$('head > script').length; i++) {
+                    if(typeof $('head > script').eq(i).attr('src') === 'undefined') continue;
+                    src = $('head > script').eq(i).attr('src');
+                    res = src.match(reg);
+                    if(res !== null && res.length === 2) {
+                        _this.cachedScript(src, function() {
+                            if(typeof placeInfo.geocode === 'object') {
+                				mapOptions.center = new daum.maps.LatLng(placeInfo.geocode.lat, placeInfo.geocode.lng);
+                				_this.mapping();
+                				if(typeof placeInfo.roadView === 'object') _this.roadView();
+                			} else {
+                				_this.geocoding(placeInfo.address, function() {
+                					_this.mapping();
+                					if(typeof placeInfo.roadView === 'object') _this.roadView();
+                				});
+                			}
+                        });
+                        break;
+                    }
+                }
+    		});
+    	};
+
+    	/*
+    	 * 주소를 경위도 좌표로 변환합니다.
+    	 *
+    	 * @method geocoding
+    	 * @param {String} addr 주소
+    	 * @param {Function} callback 콜백 함수
+    	 */
+    	this.geocoding = function(addr, callback) {
+    		var geocoder = new daum.maps.services.Geocoder();
+    		geocoder.addressSearch(addr, function(result, status) {
+    			if(status === daum.maps.services.Status.OK) {
+    				mapOptions.center = new daum.maps.LatLng(result[0].y, result[0].x);
+    				callback();
+    			}
+    		});
+    	};
+
+    	/*
+    	 * 지도를 출력합니다.
+    	 *
+    	 * @method mapping
+    	 */
+    	this.mapping = function() {
+    		map = new daum.maps.Map(mapContainer, mapOptions);
+            map.panBy(-450, 0);
+    		this.addMarker();
+    		this.addControl();
+            this.addHandler();
+    		if(typeof placeInfo.callback === 'function') placeInfo.callback();
+    	};
+
+    	/*
+    	 * 마커를 표시합니다.
+    	 *
+    	 * @method addMarker
+    	 */
+    	this.addMarker = function() {
+            markerOptions = {
+    			position: mapOptions.center
+    		};
+    		if(typeof placeInfo.marker === 'object' && typeof placeInfo.marker.src === 'string') {
+                markerOptions.image = new daum.maps.MarkerImage(
+                    placeInfo.marker.src,
+                    new daum.maps.Size(placeInfo.marker.size.x, placeInfo.marker.size.y),
+                    {offset: new daum.maps.Point(placeInfo.marker.offset.x, placeInfo.marker.offset.y)}
+                );
+    		}
+    		var marker = new daum.maps.Marker(markerOptions);
+    		marker.setMap(map);
+    	};
+
+    	/*
+    	 * 컨트롤을 올립니다.
+    	 *
+    	 * @method addControl
+    	 */
+    	this.addControl = function() {
+            if(opt.mapTypeControl === true) map.addControl(new daum.maps.MapTypeControl(), daum.maps.ControlPosition.TOPRIGHT);
+    		if(opt.zoomControl === true) map.addControl(new daum.maps.ZoomControl(), daum.maps.ControlPosition.RIGHT);
+    	};
+
+    	/*
+    	 * 로드뷰를 출력합니다.
+    	 *
+    	 * @method roadView
+    	 */
+    	this.roadView = function() {
+    		var rvOptions = placeInfo.roadView;
+    		rv = new daum.maps.Roadview(document.getElementById(rvOptions.container));
+    		var rvClient = new daum.maps.RoadviewClient();
+
+    		rvClient.getNearestPanoId(mapOptions.center, 50, function(panoId) {
+    			rv.setPanoId(panoId, mapOptions.center);
+    		});
+    	};
+
+        this.addHandler = function() {
+            $(window).resize(this.resize);
+        };
+
+        this.resize = function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                map.relayout();
+                map.setCenter(mapOptions.center);
+                if(typeof rv === 'object') rv.relayout();
+            }, 100);
+        };
+
+    	// KakaoMap class 초기화 함수를 호출합니다.
+    	this.initialize();
+    };
+
+    if(typeof placeInfo.length === 'undefined') window.instofKakaoMap = new KakaoMap(placeInfo);
+    else {
+        window.instofKakaoMap = [];
+        for(var i=0; i<placeInfo.length; i++) {
+            window.instofKakaoMap[i] = new KakaoMap(placeInfo[i]);
+        }
+    }
+
+}(jQuery));
+
+</script>
